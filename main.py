@@ -13,15 +13,26 @@ def make_detail_url(id):
   return f"{base_url}/items/{id}"
 
 db = {}
-app = Flask("HelloNews")
+app = Flask("DayNine")
 
 @app.route("/")
 def home():
   ref = request.args.get('order_by')
   if ref=="popular" or ref is None:
-    get_news(popular)
-    return render_template("index.html", orderBy="popular")
+    popularNews = db.get("popular")
+    if popularNews:
+      news = popularNews
+    else:
+      news = get_news(popular)
+      db["popular"] = news
+    return render_template("index.html", url=base_url, news=news)
   elif ref=="new":
-    return render_template("index.html", orderBy="new")
+    newNews = db.get("new")
+    if newNews:
+      news = newNews
+    else:
+      news = get_news(new)
+      db["new"] = news
+    return render_template("new.html", url=base_url, news=news)
 
 app.run(host="0.0.0.0")
