@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
-</head>
+	<link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+	<link rel="stylesheet" type="text/css" href="{{ url_for(
+    'static', filename='main.css') }}">
+	</link>
+
 <body>
-  <header>
-    <h1>The CW Times</h1>
-    Order by: 
-    <strong>Popular</strong> |
+	<header>
+		<h1>Hello NEWS</h1>
+		<strong>Popular</strong> |
     <a href="/?order_by=new">New</a>
   </header>
   <main>
     {% for item in news %}
-      <div>
-        <a href="{{base_url}}/{{item.object_id|safe}}"><h3>{{item.title}}</h3></a> 
-        (<a href="{{item.url}}"><h4>{{item.url}}</h4></a>)
+      <div class="article_title">
+        <a href={{item.url}}><h2>{{item.title}}</h2></a>
       </div>
-      <div>
+      <div class="info">
         {{item.points}} points | By: {{item.author}} | {{item.comments}} comments
       </div>
       <hr>

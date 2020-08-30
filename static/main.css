@@ -1,0 +1,12 @@
+html, body{
+  background-color:#74cac6;
+}
+
+
+.info, header{
+  color: white;
+}
+
+.article_title{
+  font-size: 27px;
+}
