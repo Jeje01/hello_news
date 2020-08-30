@@ -8,7 +8,7 @@ Hacker NEWS API를 이용해 뉴스를 popular/new 순으로 정렬해 출력
 
 - api 데이터
   
-![image](data.JPG)
+![image](data.jpg)
 
 <br>
 
